@@ -1,0 +1,28 @@
+{
+  "name": "ptable",
+  "version": "1.0.0",
+  "types": "./es6/build/ptable.d.ts",
+  "main": "./cjs/build/ptable.js",
+  "exports": {
+    ".": {
+      "import": "./es6/build/ptable.js",
+      "require": "./cjs/build/ptable.js",
+      "default": "./cjs/build/ptable.js"
+    }
+  },
+  "scripts": {
+    "compile": "npx tsc -p es6 && npx tsc -p cjs",
+	"test": "npx mocha cjs/build/**.spec.js && npx mocha es6/build/**.spec.js"
+  },
+  "devDependencies": {
+    "@types/chai": "^4.3.9",
+    "@types/mocha": "^10.0.3",
+    "@types/node": "^20.8.10",
+    "chai": "^4.3.10",
+    "mocha": "^10.2.0",
+    "typescript": "^5.2.2"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": ""
+}
