@@ -1,4 +1,4 @@
-import { PTable } from "./ptable.js";
+import { PTable } from "./ptable.mjs";
 import { expect } from "chai";
 describe("ptable.ts", () => {
     it("uniform distribution", (done) => {
@@ -34,4 +34,3 @@ describe("ptable.ts", () => {
         done();
     });
 });
-//# sourceMappingURL=ptable.spec.js.map

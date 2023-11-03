@@ -1,4 +1,4 @@
-import { PTable } from "./ptable.js";
+import { PTable } from "./ptable";
 import { expect } from "chai";
 
 describe("ptable.ts", ()=>{

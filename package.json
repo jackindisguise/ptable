@@ -2,17 +2,19 @@
   "name": "jid-ptable",
   "version": "1.0.5",
   "types": "./es6/build/ptable.d.ts",
-  "main": "./cjs/build/ptable.js",
+  "main": "./cjs/build/ptable.cjs",
   "exports": {
     ".": {
-      "import": "./es6/build/ptable.js",
-      "require": "./cjs/build/ptable.js",
-      "default": "./cjs/build/ptable.js"
+      "import": "./es6/build/ptable.mjs",
+      "require": "./cjs/build/ptable.cjs",
+      "default": "./cjs/build/ptable.cjs"
     }
   },
   "scripts": {
+	"make": "npm run compile && npm run fix && npm run test",
     "compile": "npx tsc -p es6 && npx tsc -p cjs",
-    "test": "npx mocha cjs/build/**.spec.js && npx mocha es6/build/**.spec.js"
+	"fix": "cd cjs && node fix.cjs && cd ../es6 && node fix.cjs",
+    "test": "npx mocha cjs/build/**.spec.cjs && npx mocha es6/build/**.spec.mjs"
   },
   "devDependencies": {
     "@types/chai": "^4.3.9",

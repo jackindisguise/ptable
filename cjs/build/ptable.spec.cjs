@@ -4,16 +4,16 @@
         if (v !== undefined) module.exports = v;
     }
     else if (typeof define === "function" && define.amd) {
-        define(["require", "exports", "./ptable.js", "chai"], factory);
+        define(["require", "exports", "./ptable.cjs", "chai"], factory);
     }
 })(function (require, exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
-    const ptable_js_1 = require("./ptable.js");
+    const ptable_1 = require("./ptable.cjs");
     const chai_1 = require("chai");
     describe("ptable.ts", () => {
         it("uniform distribution", (done) => {
-            const ptable = new ptable_js_1.PTable([
+            const ptable = new ptable_1.PTable([
                 {
                     value: "cake",
                     weight: 0.5
@@ -46,4 +46,3 @@
         });
     });
 });
-//# sourceMappingURL=ptable.spec.js.map

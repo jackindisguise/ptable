@@ -61,4 +61,3 @@
     }
     exports.PTable = PTable;
 });
-//# sourceMappingURL=ptable.js.map
