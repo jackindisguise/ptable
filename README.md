@@ -1,4 +1,4 @@
-[![npm](https://img.shields.io/npm/v/ptable)](https://www.npmjs.com/package/ptable)
+[![npm](https://img.shields.io/npm/v/jid-ptable)](https://www.npmjs.com/package/ptable)
 [![GitHub package.json version (branch)](https://img.shields.io/github/package-json/v/jackindisguise/ptable/main)](https://github.com/jackindisguise/ptable)
 ![GitHub last commit (branch)](https://img.shields.io/github/last-commit/jackindisguise/ptable/main)
 # About
