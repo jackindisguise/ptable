@@ -1,5 +1,5 @@
 {
-  "name": "ptable",
+  "name": "jid-ptable",
   "version": "1.0.0",
   "types": "./es6/build/ptable.d.ts",
   "main": "./cjs/build/ptable.js",

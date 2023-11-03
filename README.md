@@ -7,10 +7,10 @@ Provides a simple method of picking between multiple options at random with an e
 Supports both CJS and ES6 import style.
 ```javascript
 // CommonJS-style
-const {PTable} = require("ptable");
+const {PTable} = require("jid-ptable");
 
 // ES6 module-style
-import {PTable} from "ptable";
+import {PTable} from "jid-ptable";
 ```
 # Install
 `npm i ptable`
