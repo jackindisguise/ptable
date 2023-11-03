@@ -21,20 +21,23 @@ import {PTable} from "jid-ptable";
 const dessert = new PTable<string>([
     {
         value: "cake",
-        weight: 2 // 50%
+        weight: 2/5
     },
     {
         value: "pie",
-        weight: 1 // 25%
+        weight: 1/5
     },
     {
-        value: "ice-cream",
-        weight: 1 // 25%
+        value: "ice cream",
+        weight: 1/5
     }
 ]);
 
+// add an existing item!
+dessert.add({value:"cookie", weight:1/5});
+
 const result = dessert.roll();
-assert(["cake", "pie", "ice-cream"].includes(result)); // will be one of these 3, you know
+assert(["cake", "pie", "ice cream", "cookie"].includes(result)); // will be one of these 3, you know
 // can't really capture the probability differences without a unit test. x(
 ```
 Relative weights are summed and then compared against to generated a P value.
@@ -45,23 +48,30 @@ PTable {
   items: [
     {
       value: 'cake',
-      weight: 2,
-      p: 0.5,
+      weight: 0.4,
+      p: 0.4,
       min: 0,
-      max: 0.5
+      max: 0.4
     },
     {
       value: 'pie',
-      weight: 1,
-      p: 0.25,
-      min: 0.5
-      max: 0.75
+      weight: 0.2,
+      p: 0.2,
+      min: 0.4
+      max: 0.6
     },
     {
-      value: 'ice-cream',
-      weight: 1,
-      p: 0.25
-      min: 0.75
+      value: 'ice cream',
+      weight: 0.2,
+      p: 0.2
+      min: 0.6
+      max: 0.8
+    },
+    {
+      value: 'cookie',
+      weight: 0.2,
+      p: 0.2
+      min: 0.8
       max: 1
     }
   ]
@@ -73,21 +83,14 @@ If a roll falls into an item's range, it will be returned.
 
 ## Use an externally-generated roll value.
 ```javascript
-const dessert = new PTable<string>([
-    {
-        value: "cake",
-        weight: 2 // 50%
-    },
-    {
-        value: "pie",
-        weight: 1 // 25%
-    },
-    {
-        value: "ice-cream",
-        weight: 1 // 25%
-    }
-]);
+const dessert = new PTable<string>();
 
-const result = dessert.roll(0.25);
+// create a new item and add it!
+dessert.create("cake", 2/4);
+dessert.create("pie", 1/4);
+dessert.create("ice cream", 1/4);
+
+const notRNG = 0.25;
+const result = dessert.roll(notRNG);
 assert(result === "cake"); // 0~0.5 will always be cake
 ```

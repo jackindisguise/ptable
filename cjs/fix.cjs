@@ -20,7 +20,7 @@ fs.readdir("build", (err, files) => {
 			}
 			fs.writeFile("build/" + newPath, fixed, (err) => {
 				if (err) return;
-				console.log(`generated ${newPath} from ${file}`);
+				//console.log(`generated ${newPath} from ${file}`);
 				fs.rm("build/" + file, (err) => {
 					if (err) return;
 					//console.log(`deleted ${file}`);

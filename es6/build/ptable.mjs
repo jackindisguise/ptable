@@ -3,36 +3,54 @@
  */
 export class PTable {
     constructor(items) {
-        this.items = this.prepare(items);
+        /** The items that this table can roll. */
+        this.items = [];
+        this.weightSum = 0;
+        if (items)
+            this.add(...items);
     }
     /**
-     * Prepare generic pre-items for use with the PTable.
+     * Create an item and add it to our item list.
+     * Updates the roll values.
+     * @param value
+     * @param weight
+     */
+    create(value, weight) {
+        this.add({ value: value, weight: weight });
+    }
+    /**
+     * Adds items to our item list.
+     * Updates the roll values.
      * @param items
      */
-    prepare(items) {
-        // generate sum for P values
-        let sum = 0;
-        for (let item of items)
-            sum += item.weight;
-        // generate P values and ranges
-        let last = 0;
-        const generatedItems = [];
-        for (let i = 0; i < items.length; i++) {
-            const item = items[i];
-            const p = item.weight / sum;
-            const generatedItem = {
+    add(...items) {
+        for (let item of items) {
+            this.items.push({
                 value: item.value,
                 weight: item.weight,
-                p: p,
-                min: last,
-                max: last + p
-            };
-            if (i === items.length - 1)
-                generatedItem.max = 1; // avoids stupid problems
-            generatedItems.push(generatedItem);
-            last = generatedItem.max;
+                p: 0,
+                min: 0,
+                max: 0
+            });
+            this.weightSum += item.weight;
         }
-        return generatedItems;
+        this.update();
+    }
+    /**
+     * Update roll values for items.
+     */
+    update() {
+        let last = 0;
+        for (let i = 0; i < this.items.length; i++) {
+            const item = this.items[i];
+            const p = item.weight / this.weightSum;
+            item.p = p;
+            item.min = last;
+            item.max = last + p;
+            if (i === this.items.length - 1)
+                item.max = 1; // avoids stupid problems
+            last = item.max;
+        }
     }
     /**
      * Roll a random item.
@@ -44,6 +62,6 @@ export class PTable {
         for (let item of this.items)
             if (item.min <= seed && seed <= item.max)
                 return item.value;
-        throw new Error("your P value or your item list are fucked");
+        throw new Error("your P values are fricken messed up bro");
     }
 }

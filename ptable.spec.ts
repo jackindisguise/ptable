@@ -3,20 +3,13 @@ import { expect } from "chai";
 
 describe("ptable.ts", ()=>{
 	it("uniform distribution", (done)=>{
-		const ptable = new PTable<string>([
-			{
-				value: "cake",
-				weight: 0.5
-			},
-			{
-				value: "pie",
-				weight: 0.25
-			},
-			{
-				value: "ice-cream",
-				weight: 0.25
-			}
-		]);
+		const ptable = new PTable<string>();
+
+		// populate table with items
+		ptable.create("cake", 2/5);
+		ptable.create("pie", 1/5);
+		ptable.create("ice cream", 1/5);
+		ptable.create("cookie", 1/5)
 
 		// roll and track results
 		const attempts = 100000;

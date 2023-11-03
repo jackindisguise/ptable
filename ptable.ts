@@ -25,39 +25,55 @@ export interface PTableItem<T> extends PTableItemPre<T>{
  */
 export class PTable<T>{
 	/** The items that this table can roll. */
-	items: PTableItem<T>[];
-	constructor(items: PTableItemPre<T>[]){
-		this.items = this.prepare(items);
+	items: PTableItem<T>[] = [];
+	private weightSum: number = 0;
+	constructor(items?: PTableItemPre<T>[]){
+		if(items) this.add(...items);
 	}
 
 	/**
-	 * Prepare generic pre-items for use with the PTable.
+	 * Create an item and add it to our item list.
+	 * Updates the roll values.
+	 * @param value
+	 * @param weight
+	 */
+	create(value: T, weight: number){
+		this.add({value: value, weight:weight});
+	}
+
+	/**
+	 * Adds items to our item list.
+	 * Updates the roll values.
 	 * @param items 
 	 */
-	private prepare(items: PTableItemPre<T>[]): PTableItem<T>[]{
-		// generate sum for P values
-		let sum = 0;
-		for(let item of items) sum += item.weight;
-
-		// generate P values and ranges
-		let last = 0;
-		const generatedItems: PTableItem<T>[] = [];
-		for(let i=0;i<items.length;i++) {
-			const item = items[i];
-			const p = item.weight/sum;
-			const generatedItem: PTableItem<T> = {
+	add(...items: PTableItemPre<T>[]){
+		for(let item of items){
+			this.items.push({
 				value: item.value,
 				weight: item.weight,
-				p: p,
-				min: last,
-				max: last+p
-			};
-			if(i===items.length-1) generatedItem.max = 1; // avoids stupid problems
-			generatedItems.push(generatedItem);
-			last = generatedItem.max;
+				p: 0,
+				min: 0,
+				max: 0
+			});
+			this.weightSum += item.weight;
 		}
+		this.update();
+	}
 
-		return generatedItems;
+	/**
+	 * Update roll values for items.
+	 */
+	private update(){
+		let last = 0;
+		for(let i=0;i<this.items.length;i++) {
+			const item = this.items[i];
+			const p = item.weight/this.weightSum;
+			item.p = p;
+			item.min = last;
+			item.max = last+p;
+			if(i===this.items.length-1) item.max = 1; // avoids stupid problems
+			last = item.max;
+		}
 	}
 
 	/**
@@ -68,6 +84,6 @@ export class PTable<T>{
 	roll(p?: number): T{
 		const seed = p||Math.random();
 		for(let item of this.items) if(item.min <= seed && seed <= item.max) return item.value;
-		throw new Error("your P value or your item list are fucked");
+		throw new Error("your P values are fricken messed up bro");
 	}
 }

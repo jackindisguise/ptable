@@ -23,12 +23,25 @@ export interface PTableItem<T> extends PTableItemPre<T> {
 export declare class PTable<T> {
     /** The items that this table can roll. */
     items: PTableItem<T>[];
-    constructor(items: PTableItemPre<T>[]);
+    private weightSum;
+    constructor(items?: PTableItemPre<T>[]);
     /**
-     * Prepare generic pre-items for use with the PTable.
+     * Create an item and add it to our item list.
+     * Updates the roll values.
+     * @param value
+     * @param weight
+     */
+    create(value: T, weight: number): void;
+    /**
+     * Adds items to our item list.
+     * Updates the roll values.
      * @param items
      */
-    private prepare;
+    add(...items: PTableItemPre<T>[]): void;
+    /**
+     * Update roll values for items.
+     */
+    private update;
     /**
      * Roll a random item.
      * @param p Provide a roll generated externally.
