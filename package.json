@@ -1,6 +1,6 @@
 {
   "name": "jid-ptable",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "types": "./es6/build/ptable.d.ts",
   "main": "./cjs/build/ptable.js",
   "exports": {
@@ -12,7 +12,7 @@
   },
   "scripts": {
     "compile": "npx tsc -p es6 && npx tsc -p cjs",
-	"test": "npx mocha cjs/build/**.spec.js && npx mocha es6/build/**.spec.js"
+    "test": "npx mocha cjs/build/**.spec.js && npx mocha es6/build/**.spec.js"
   },
   "devDependencies": {
     "@types/chai": "^4.3.9",
