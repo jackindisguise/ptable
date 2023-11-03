@@ -34,3 +34,4 @@ describe("ptable.ts", () => {
         done();
     });
 });
+//# sourceMappingURL=ptable.spec.js.map

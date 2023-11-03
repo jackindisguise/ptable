@@ -47,3 +47,4 @@ export class PTable {
         throw new Error("your P value or your item list are fucked");
     }
 }
+//# sourceMappingURL=ptable.js.map
