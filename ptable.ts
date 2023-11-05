@@ -88,8 +88,9 @@ export class PTable<T>{
 	 * @returns {T}
 	 */
 	roll(p?: number): T{
+		if(p !== undefined && (p < 0 || p > 1)) throw new Error(`invalid p value: ${p}; must be positive number between 0 (inclusive) and 1 (inclusive)`);
 		const seed = p||Math.random();
 		for(let i=0;i<this.items.length;i++) if(seed <= this.items[i].max) return this.items[i].value;
-		throw new Error("your P values are fricken messed up bro");
+		throw new Error("table is fricken messed up; did not return a result -- not actually possible!");
 	}
 }
