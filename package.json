@@ -1,6 +1,6 @@
 {
   "name": "jid-ptable",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "types": "./es6/build/ptable.d.ts",
   "main": "./cjs/build/ptable.cjs",
   "exports": {
