@@ -17,6 +17,8 @@ export interface PTableItem<T> extends PTableItemPre<T> {
     min: number;
     max: number;
 }
+export declare class InvalidPTableItemError extends Error {
+}
 /**
  * Provides a standardized method of picking from a list of options based on RNG.
  */

@@ -1,3 +1,5 @@
+export class InvalidPTableItemError extends Error {
+}
 /**
  * Provides a standardized method of picking from a list of options based on RNG.
  */
@@ -16,6 +18,8 @@ export class PTable {
      * @param weight
      */
     create(value, weight) {
+        if (weight <= 0)
+            throw new InvalidPTableItemError("need positive weight value");
         this.add({ value: value, weight: weight });
     }
     /**
@@ -25,6 +29,8 @@ export class PTable {
      */
     add(...items) {
         for (let item of items) {
+            if (item.weight <= 0)
+                throw new InvalidPTableItemError("need positive weight value");
             this.items.push({
                 value: item.value,
                 weight: item.weight,
@@ -59,9 +65,9 @@ export class PTable {
      */
     roll(p) {
         const seed = p || Math.random();
-        for (let item of this.items)
-            if (item.min <= seed && seed <= item.max)
-                return item.value;
+        for (let i = 0; i < this.items.length; i++)
+            if (seed <= this.items[i].max)
+                return this.items[i].value;
         throw new Error("your P values are fricken messed up bro");
     }
 }
