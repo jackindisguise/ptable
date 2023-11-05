@@ -26,5 +26,6 @@
   },
   "author": "",
   "license": "ISC",
+  "keywords": ["probability", "rolls", "ptable", "loot table"],
   "description": "A simple method of picking between multiple options at random with an expected distribution."
 }
