@@ -1,3 +1,5 @@
+[![Static Badge](https://img.shields.io/badge/documentation-orange)](https://jackindisguise.github.io/ptable/)
+
 # PTable
 A PTable, probability table for short, is a set of items that have an assigned probability.
 
