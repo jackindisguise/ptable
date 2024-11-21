@@ -11,12 +11,9 @@
 		"require": "./build/ptable.cjs"
 	},
 	"devDependencies": {
-		"@mxssfd/typedoc-theme": "^1.1.7",
 		"@types/node": "^22.9.1",
 		"esbuild": "^0.24.0",
-		"jsdoc": "^4.0.4",
-		"typedoc": "^0.26.11",
-		"typedoc-plugin-markdown": "^4.2.10"
+		"typedoc": "^0.26.11"
 	},
 	"scripts": {
 		"build": "tsc && npm run build:mjs && npm run build:cjs",
@@ -25,8 +22,5 @@
 	},
 	"author": "jackindisguise",
 	"license": "ISC",
-	"description": "Creating and rolling results from a probability table.",
-	"dependencies": {
-		"typedoc-github-theme": "^0.1.2"
-	}
+	"description": "Creating and rolling results from a probability table."
 }
