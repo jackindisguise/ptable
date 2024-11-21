@@ -1,0 +1,32 @@
+{
+	"name": "ptable",
+	"version": "1.0.0",
+	"type": "module",
+	"main": "./build/ptable.cjs",
+	"module": "./build/ptable.mjs",
+	"types": "./build/ptable.d.ts",
+	"exports": {
+		"types": "./build/ptable.d.ts",
+		"import": "./build/ptable.mjs",
+		"require": "./build/ptable.cjs"
+	},
+	"devDependencies": {
+		"@mxssfd/typedoc-theme": "^1.1.7",
+		"@types/node": "^22.9.1",
+		"esbuild": "^0.24.0",
+		"jsdoc": "^4.0.4",
+		"typedoc": "^0.26.11",
+		"typedoc-plugin-markdown": "^4.2.10"
+	},
+	"scripts": {
+		"build": "tsc && npm run build:mjs && npm run build:cjs",
+		"build:mjs": "esbuild build/ptable.js --bundle --platform=node --target=es6 --format=esm --outfile=build/ptable.mjs",
+		"build:cjs": "esbuild build/ptable.js --bundle --platform=node --target=node18 --format=cjs --outfile=build/ptable.cjs"
+	},
+	"author": "jackindisguise",
+	"license": "ISC",
+	"description": "Creating and rolling results from a probability table.",
+	"dependencies": {
+		"typedoc-github-theme": "^0.1.2"
+	}
+}
