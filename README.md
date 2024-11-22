@@ -1,7 +1,8 @@
 <div align='center'>
 	
-[![Static Badge](https://img.shields.io/badge/GitHub-black?logo=github)](https://github.com/jackindisguise/ptable)
-[![Static Badge](https://img.shields.io/badge/Documentation-orange?logo=github)](https://jackindisguise.github.io/ptable/)
+[![Static Badge](https://img.shields.io/badge/GitHub-black?style=for-the-badge&logo=github)](https://github.com/jackindisguise/ptable)
+[![Static Badge](https://img.shields.io/badge/Documentation-orange?style=for-the-badge&logo=github)](https://jackindisguise.github.io/ptable/)
+![GitHub package.json version](https://img.shields.io/github/package-json/v/jackindisguise/ptable?style=for-the-badge&logo=npm)
 
 </div>
 
