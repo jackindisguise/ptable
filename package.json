@@ -18,7 +18,9 @@
 	"scripts": {
 		"build": "tsc && npm run build:mjs && npm run build:cjs",
 		"build:mjs": "esbuild build/ptable.js --bundle --platform=node --target=es6 --format=esm --outfile=build/ptable.mjs",
-		"build:cjs": "esbuild build/ptable.js --bundle --platform=node --target=node18 --format=cjs --outfile=build/ptable.cjs"
+		"build:cjs": "esbuild build/ptable.js --bundle --platform=node --target=node18 --format=cjs --outfile=build/ptable.cjs",
+		"docs": "npx typedoc",
+		"deploy": "npm run build && npm run docs"
 	},
 	"author": "jackindisguise",
 	"license": "ISC",
