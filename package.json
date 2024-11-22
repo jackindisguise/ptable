@@ -24,5 +24,8 @@
 	},
 	"author": "jackindisguise",
 	"license": "ISC",
-	"description": "Creating and rolling results from a probability table."
+	"description": "Creating and rolling results from a probability table.",
+	"dependencies": {
+		"standard-version": "^9.5.0"
+	}
 }
