@@ -7,7 +7,7 @@
 </div>
 
 # PTable
-A PTable ("**P**robability **Table**") is a set of items that have an assigned probability.
+A PTable ("**P**robability **Table**") is a set of items that have an assigned probability to be chosen randomly.
 
 The goal of the probability table is to make it quick and easy to assign a set chance to multiple outcomes of a single event.
 
